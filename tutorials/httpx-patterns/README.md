@@ -1,30 +1,37 @@
-# httpx Patterns for API Interview Prep
+# HTTPX Quickstart Patterns for API Interview Prep
 
-This tutorial folder is for practicing Python API-client patterns with `httpx`, especially if you are already comfortable with `requests` but want more fluency with async-native workflows.
+This tutorial folder is deliberately convergent with the official HTTPX quickstart: https://www.python-httpx.org/quickstart/
 
-Many companies that use Go or Node expect candidates to be comfortable thinking in terms of concurrent IO, request lifecycles, cancellation/timeouts, and explicit error handling. `httpx.AsyncClient` is a good Python way to practice those patterns while staying in Python.
+Use the official page as the source of truth, then use these notes to practice the same patterns in an interview-prep style. The emphasis is on becoming fluent with HTTPX while still connecting it back to what you already know from `requests`.
+
+Many companies that use Go or Node expect candidates to be comfortable thinking in terms of concurrent IO, request lifecycles, timeouts, and explicit error handling. `httpx.AsyncClient` is a good Python way to practice those patterns while staying in Python.
 
 ## Suggested order
 
-1. `01_requests_to_httpx.md` — map familiar `requests` patterns to `httpx`.
-2. `02_async_client_lifecycle.md` — use `AsyncClient` correctly.
-3. `03_timeouts_errors_retries.md` — handle API failures without hiding useful context.
-4. `04_concurrency_limits.md` — run concurrent requests without stampeding an API.
+1. `01_quickstart_basics.md` — verbs, params, response content, JSON, headers, and request bodies.
+2. `02_status_headers_timeouts_auth.md` — status codes, response headers, redirects, timeouts, auth, and exceptions.
+3. `03_async_quickstart_equivalents.md` — convert the same quickstart patterns to `AsyncClient`.
+4. `04_clients_pagination_and_concurrency.md` — use reusable clients, pagination loops, and bounded concurrency.
 5. `05_testing_httpx_clients.md` — test async clients with mocked responses.
 
 ## Practice goal
 
 After this section, you should be able to explain and implement:
 
-- when to use `httpx.Client` versus `httpx.AsyncClient`
-- why client reuse matters
-- how to structure `async with httpx.AsyncClient(...)`
-- how to add params, headers, auth, and JSON bodies
-- how to configure timeouts
-- how to handle HTTP status errors and network errors separately
-- how to paginate with a loop
-- how to run bounded concurrent requests with `asyncio.Semaphore`
-- how to test without live network calls
+- top-level HTTPX request calls that look similar to `requests`
+- query parameters with `params=...`
+- response handling with `.text`, `.content`, and `.json()`
+- custom headers
+- form, JSON, multipart, and binary request bodies
+- status-code checks with `raise_for_status()`
+- response-header inspection
+- redirect behavior with `follow_redirects=True`
+- timeout configuration
+- basic and digest authentication
+- explicit handling of `RequestError` versus `HTTPStatusError`
+- async equivalents using `httpx.AsyncClient`
+- bounded concurrent requests with `asyncio.Semaphore`
+- mocked tests that avoid live network calls
 
 ## Interview framing
 
