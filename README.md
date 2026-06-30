@@ -12,6 +12,17 @@ This repository is a collection of small, intentionally unfinished client-buildi
 - testing client behavior without depending on live third-party services
 - separating API-specific logic from reusable HTTP/client infrastructure
 
+## Recommended study path
+
+Start with the API-specific folders under `apis/`. Those are meant for actual skills practice: reading docs, designing a client, handling authentication, adding pagination, and writing tests against mocked HTTP responses.
+
+After you have built some muscle memory with the individual APIs, move to `prompts/` for interview grinding. Those prompts are intentionally blanker and more timeboxed so they feel closer to a live CoderPad screen: minimal setup, one focused problem, and just enough acceptance criteria to drive implementation.
+
+In other words:
+
+1. Use `apis/` to learn and practice the underlying API-client skills.
+2. Use `prompts/` to rehearse applying those skills quickly under interview constraints.
+
 ## Project layout
 
 ```text
@@ -20,6 +31,7 @@ api-study/
 │   ├── jsonplaceholder/
 │   ├── openweathermap/
 │   └── pokeapi/
+├── prompts/
 ├── src/
 │   └── api_study/
 ├── tests/
@@ -32,6 +44,8 @@ Each API folder contains:
 - a `README.md` with API docs and acceptance criteria
 - a `client.py` stub for the API-specific client
 - a `test_client.py` stub for tests
+
+The `prompts/` folder contains thinner CoderPad-style drills for timed repetition after the API-specific practice.
 
 ## Local setup
 
@@ -86,7 +100,7 @@ ruff check .
 mypy src apis
 ```
 
-## Suggested workflow for each exercise
+## Suggested workflow for each API exercise
 
 1. Read the linked API docs for the target service.
 2. Sketch the smallest useful client interface.
@@ -95,3 +109,11 @@ mypy src apis
 5. Add pagination helpers for list/search endpoints.
 6. Write tests using mocked HTTP responses before trying live calls.
 7. Add a short usage example to the API folder README.
+
+## Suggested workflow for CoderPad-style prompts
+
+1. Pick a prompt only after practicing the corresponding API folder.
+2. Timebox yourself to 30–45 minutes.
+3. Start from the minimal signature in the prompt or a blank file.
+4. Implement only enough to satisfy the stated acceptance criteria.
+5. Practice explaining tradeoffs and edge cases aloud as you code.
